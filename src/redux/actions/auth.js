@@ -7,7 +7,8 @@ export function login(userCredentails)
 {
     if (userCredentails.username==='7696249559' && userCredentails.password==='123') {
         return{
-            type:LOGIN_SUCCESS
+            type:LOGIN_SUCCESS,
+            username:userCredentails.username
         }
     }else{
         return{

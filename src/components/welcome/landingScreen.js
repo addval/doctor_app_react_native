@@ -21,7 +21,7 @@ class LandingScreen extends Component {
       
       <View style={styles.rootView}>
 
-      <Image source={require('../assets/ic_kulcare_logo.png')}
+      <Image source={require('../../assets/ic_kulcare_logo.png')}
       style={{
         width: 300,
         height: 150,

@@ -39,7 +39,9 @@ const DashboardStack = StackNavigator(
     headerMode: "float",
     navigationOptions: ({ navigation }) => ({
       title: "Welcome",
+      headerStyle: {backgroundColor: '#007AFF'},
       gesturesEnabled: false,
+      headerTintColor: 'white',
       headerLeft: (
         <Text
           onPress={() => {
@@ -69,11 +71,12 @@ const noTransitionConfig = () => ({
 
 class Application extends Component {
   render() {
-    if (this.props.user.loggedIn) {
-      return <DashboardStack/>;
-    } else {
-      return <LoginStack/>;
-    }
+    // if (this.props.user.loggedIn) {
+    //   return <DashboardStack/>;
+    // } else {
+    //   return <LoginStack/>;
+    // }
+    return <DashboardStack/>
   }
 }
 
