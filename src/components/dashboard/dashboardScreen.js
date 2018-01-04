@@ -23,12 +23,12 @@ class DashboardScreen extends Component {
         <View style={[styles.blueBackground]}>
           <View style={styles.horizontalView}>
             <View style={styles.container}>
-              <Text style={styles.textBig}>11</Text>
+              <Text style={styles.textBig}>0</Text>
               <Text style={styles.textSmall}>Patient(s) Helped</Text>
             </View>
             <View style={styles.horizontalDivider} />
             <View style={styles.container}>
-              <Text style={styles.textBig}>$150</Text>
+              <Text style={styles.textBig}>$0</Text>
               <Text style={styles.textSmall}>Money Earned</Text>
             </View>
           </View>
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   blueBackground: {
     backgroundColor: "#007AFF",
-    height: 150
+    height: 170
   },
   horizontalView: {
     flex: 1,
