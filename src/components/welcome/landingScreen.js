@@ -29,6 +29,21 @@ class LandingScreen extends Component {
         alignSelf: "center"
       }}/>
 
+<Image source={require('../../assets/ic_heart_hands.png')}
+      style={{
+        height: 252,
+        resizeMode: Image.resizeMode.contain,
+        alignSelf: "center",
+        marginTop:38,
+        marginBottom:22,
+        marginLeft:22,
+        marginRight:22
+      }}/>
+
+      <Text style={styles.blueText}>
+        Your online clinic
+      </Text>
+
         <View style={styles.bottomButtons}>
           <CustomButton
             style={[styles.lightBlueBtn]}
@@ -66,6 +81,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF",
     padding: 10,
     height: 58
+  },
+  blueText:{
+    color:"#007AFF",
+    marginTop:18,
+    marginBottom:8,
+    fontSize:29,
+    alignSelf:"center"
   }
 });
 export default LandingScreen;
