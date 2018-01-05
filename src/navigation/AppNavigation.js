@@ -10,6 +10,7 @@ import SignupPasswordScreen from "../components/signup/signupPasswordScreen";
 import SignupPhoneScreen from "../components/signup/signupPhoneScreen";
 import SignupCompleteScreen from "../components/signup/signupCompleteScreen";
 import DashboardScreen from "../components/dashboard/dashboardScreen";
+import Patients from "../components/Patients/Patients";
 import InboxContainerScreen from "../components/inbox/inboxContainerScreen";
 
 const LoginStack = StackNavigator(
@@ -26,7 +27,6 @@ const LoginStack = StackNavigator(
   }
 );
 
-// drawer stack
 const DrawerStack = DrawerNavigator({
   Home: { screen: DashboardScreen }
 });
@@ -62,6 +62,15 @@ const DashboardStack = StackNavigator({
     screen: InboxContainerScreen,
     navigationOptions: ({ navigation }) => ({
       title: "Inbox",
+      headerStyle: { backgroundColor: "#007AFF" },
+      gesturesEnabled: false,
+      headerTintColor: "white"
+    })
+  },
+  Patient: {
+    screen: Patients,
+    navigationOptions: ({ navigation }) => ({
+      title: "Patients",
       headerStyle: { backgroundColor: "#007AFF" },
       gesturesEnabled: false,
       headerTintColor: "white"
