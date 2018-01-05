@@ -18,6 +18,6 @@ export default class NewConsultationList extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgrondColor: 'lightgray',
+        backgrondColor: 'red',
     },
 })
