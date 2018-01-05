@@ -42,7 +42,7 @@ class LoginPhoneScreen extends Component {
       <KeyboardAvoidingView behavior="padding" style={styles.rootView}>
     
         <Image
-          source={require("../assets/ic_kulcare_logo.png")}
+          source={require("../../assets/ic_kulcare_logo.png")}
           style={{
             width: 300,
             height: 150,

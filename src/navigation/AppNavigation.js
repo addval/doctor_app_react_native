@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, Animated, Easing } from "react-native";
+import { Image, Animated, Easing, TouchableOpacity } from "react-native";
 import { StackNavigator, DrawerNavigator } from "react-navigation";
 import { connect } from "react-redux";
 
@@ -39,9 +39,12 @@ const DashboardStack = StackNavigator(
     headerMode: "float",
     navigationOptions: ({ navigation }) => ({
       title: "Welcome",
+      headerStyle: { backgroundColor: "#007AFF" },
       gesturesEnabled: false,
+      headerTintColor: "white",
       headerLeft: (
-        <Text
+        <TouchableOpacity
+        activeOpacity={0.7}
           onPress={() => {
             if (navigation.state.index === 0) {
               navigation.navigate("DrawerOpen");
@@ -49,10 +52,12 @@ const DashboardStack = StackNavigator(
               navigation.navigate("DrawerClose");
             }
           }}
-          style={{ padding: 5 }}
         >
-          Menu
-        </Text>
+          <Image
+            source={require("../assets/ic_menu.png")}
+            style={{ padding: 5, width: 24, height: 24, marginLeft:16 }}
+          />
+        </TouchableOpacity>
       )
     }),
     transitionConfig: noTransitionConfig
@@ -74,6 +79,7 @@ class Application extends Component {
     } else {
       return <LoginStack/>;
     }
+   // return <DashboardStack />;
   }
 }
 
@@ -88,4 +94,3 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default connect(mapStateToProps)(Application);
-
