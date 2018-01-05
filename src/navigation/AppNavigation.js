@@ -10,6 +10,7 @@ import SignupPasswordScreen from "../components/signup/signupPasswordScreen";
 import SignupPhoneScreen from "../components/signup/signupPhoneScreen";
 import SignupCompleteScreen from "../components/signup/signupCompleteScreen";
 import DashboardScreen from "../components/dashboard/dashboardScreen";
+import InboxContainerScreen from "../components/inbox/inboxContainerScreen";
 
 const LoginStack = StackNavigator(
   {
@@ -30,10 +31,18 @@ const LoginStack = StackNavigator(
 const DrawerStack = DrawerNavigator({
   Home: { screen: DashboardScreen }
 });
-
+const InboxStack=StackNavigator({
+Inbox:{screen:InboxContainerScreen}
+});
 const DashboardStack = StackNavigator(
   {
-    DrawerStack: { screen: DrawerStack }
+    DrawerStack: { screen: DrawerStack },
+    InboxStack:{screen:InboxStack,
+      navigationOptions: ({navigation}) => ({
+        title: 'Inbox',
+        headerStyle: { backgroundColor: "#007AFF" },
+        headerTintColor: "white",
+      })}
   },
   {
     headerMode: "float",
@@ -74,12 +83,12 @@ const noTransitionConfig = () => ({
 
 class Application extends Component {
   render() {
-    if (this.props.user.loggedIn) {
-      return <DashboardStack/>;
-    } else {
-      return <LoginStack/>;
-    }
-   // return <DashboardStack />;
+    // if (this.props.user.loggedIn) {
+    //   return <DashboardStack/>;
+    // } else {
+    //   return <LoginStack/>;
+    // }
+   return <DashboardStack />;
   }
 }
 
