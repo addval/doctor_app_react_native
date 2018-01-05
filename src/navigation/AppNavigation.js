@@ -10,7 +10,9 @@ import SignupPasswordScreen from "../components/signup/signupPasswordScreen";
 import SignupPhoneScreen from "../components/signup/signupPhoneScreen";
 import SignupCompleteScreen from "../components/signup/signupCompleteScreen";
 import DashboardScreen from "../components/dashboard/dashboardScreen";
+import Patients from "../components/Patients/Patients";
 import InboxContainerScreen from "../components/inbox/inboxContainerScreen";
+
 
 const LoginStack = StackNavigator(
   {
@@ -66,17 +68,25 @@ const DashboardStack = StackNavigator({
       gesturesEnabled: false,
       headerTintColor: "white"
     })
+  },
+  Patient: { screen: Patients ,
+  navigationOptions: ({ navigation }) => ({
+      title: "Patients",
+      headerStyle: { backgroundColor: "#007AFF" },
+      gesturesEnabled: false,
+      headerTintColor: "white"
+    })
   }
 });
 
 class Application extends Component {
   render() {
-    if (this.props.user.loggedIn) {
-      return <DashboardStack />;
-    } else {
-      return <LoginStack />;
-    }
-    //return <DashboardStack />;
+    // if (this.props.user.loggedIn) {
+    //   return <DashboardStack/>;
+    // } else {
+    //   return <LoginStack/>;
+    // }
+    return <DashboardStack/>;
   }
 }
 
