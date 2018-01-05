@@ -10,6 +10,7 @@ import SignupPasswordScreen from "../components/signup/signupPasswordScreen";
 import SignupPhoneScreen from "../components/signup/signupPhoneScreen";
 import SignupCompleteScreen from "../components/signup/signupCompleteScreen";
 import DashboardScreen from "../components/dashboard/dashboardScreen";
+import Patients from "../components/Patients/Patients";
 
 const LoginStack = StackNavigator(
   {
@@ -33,7 +34,9 @@ const DrawerStack = DrawerNavigator({
 
 const DashboardStack = StackNavigator(
   {
-    DrawerStack: { screen: DrawerStack }
+    DrawerStack: { screen: DrawerStack },
+    Patients: { screen: Patients }
+
   },
   {
     headerMode: "float",
@@ -69,11 +72,12 @@ const noTransitionConfig = () => ({
 
 class Application extends Component {
   render() {
-    if (this.props.user.loggedIn) {
-      return <DashboardStack/>;
-    } else {
-      return <LoginStack/>;
-    }
+    // if (this.props.user.loggedIn) {
+    //   return <DashboardStack/>;
+    // } else {
+    //   return <LoginStack/>;
+    // }
+    return <DashboardStack/>;
   }
 }
 
