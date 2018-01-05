@@ -10,6 +10,7 @@ import SignupPasswordScreen from "../components/signup/signupPasswordScreen";
 import SignupPhoneScreen from "../components/signup/signupPhoneScreen";
 import SignupCompleteScreen from "../components/signup/signupCompleteScreen";
 import DashboardScreen from "../components/dashboard/dashboardScreen";
+import InboxContainerScreen from "../components/inbox/inboxContainerScreen";
 
 const LoginStack = StackNavigator(
   {
@@ -21,8 +22,7 @@ const LoginStack = StackNavigator(
     SignupCompleteScreen: { screen: SignupCompleteScreen }
   },
   {
-    headerMode: "float",
-    transitionConfig: noTransitionConfig
+    headerMode: "float"
   }
 );
 
@@ -31,12 +31,9 @@ const DrawerStack = DrawerNavigator({
   Home: { screen: DashboardScreen }
 });
 
-const DashboardStack = StackNavigator(
-  {
-    DrawerStack: { screen: DrawerStack }
-  },
-  {
-    headerMode: "float",
+const DashboardStack = StackNavigator({
+  Drawer: {
+    screen: DrawerStack,
     navigationOptions: ({ navigation }) => ({
       title: "Welcome",
       headerStyle: { backgroundColor: "#007AFF" },
@@ -44,7 +41,7 @@ const DashboardStack = StackNavigator(
       headerTintColor: "white",
       headerLeft: (
         <TouchableOpacity
-        activeOpacity={0.7}
+          activeOpacity={0.7}
           onPress={() => {
             if (navigation.state.index === 0) {
               navigation.navigate("DrawerOpen");
@@ -55,31 +52,31 @@ const DashboardStack = StackNavigator(
         >
           <Image
             source={require("../assets/ic_menu.png")}
-            style={{ padding: 5, width: 24, height: 24, marginLeft:16 }}
+            style={{ padding: 5, width: 24, height: 24, marginLeft: 16 }}
           />
         </TouchableOpacity>
       )
-    }),
-    transitionConfig: noTransitionConfig
-  }
-);
-
-const noTransitionConfig = () => ({
-  transitionSpec: {
-    duration: 0,
-    timing: Animated.timing,
-    easing: Easing.step0
+    })
+  },
+  Inbox: {
+    screen: InboxContainerScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "Inbox",
+      headerStyle: { backgroundColor: "#007AFF" },
+      gesturesEnabled: false,
+      headerTintColor: "white"
+    })
   }
 });
 
 class Application extends Component {
   render() {
     if (this.props.user.loggedIn) {
-      return <DashboardStack/>;
+      return <DashboardStack />;
     } else {
-      return <LoginStack/>;
+      return <LoginStack />;
     }
-   // return <DashboardStack />;
+    //return <DashboardStack />;
   }
 }
 

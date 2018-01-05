@@ -17,6 +17,10 @@ class DashboardScreen extends Component {
     super(props);
   }
 
+  goToInbox = () => {
+    this.props.navigation.navigate("Inbox");
+  };
+
   render() {
     return (
       <ScrollView style={styles.root}>
@@ -38,15 +42,15 @@ class DashboardScreen extends Component {
             flex: 1,
             flexDirection: "row",
             justifyContent: "space-between",
-            backgroundColor:"#E9F1FD",
-            padding:5,
-            alignItems:"center",
-            paddingLeft:20,
-            paddingRight:20
+            backgroundColor: "#E9F1FD",
+            padding: 5,
+            alignItems: "center",
+            paddingLeft: 20,
+            paddingRight: 20
           }}
         >
           <Text>Accepting Cases</Text>
-          <Switch></Switch>
+          <Switch />
         </View>
         <TouchableOpacity activeOpacity={0.7} style={styles.menuItem}>
           <Image
@@ -64,7 +68,11 @@ class DashboardScreen extends Component {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.7} style={styles.menuItem}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.menuItem}
+          onPress={() => this.goToInbox()}
+        >
           <Image
             source={require("../../assets/ic_dash_inbox.png")}
             style={{
@@ -76,7 +84,9 @@ class DashboardScreen extends Component {
           />
           <View>
             <Text style={styles.menuItemHeadingText}>Inbox</Text>
-            <Text style={styles.menuItemSubHeadingText}>NEW & COMPLETED CONSULTATIONS</Text>
+            <Text style={styles.menuItemSubHeadingText}>
+              NEW & COMPLETED CONSULTATIONS
+            </Text>
           </View>
         </TouchableOpacity>
 
@@ -108,7 +118,9 @@ class DashboardScreen extends Component {
           />
           <View>
             <Text style={styles.menuItemHeadingText}>Me</Text>
-            <Text style={styles.menuItemSubHeadingText}>PROFILE, SETTINGS & PAYMENTS</Text>
+            <Text style={styles.menuItemSubHeadingText}>
+              PROFILE, SETTINGS & PAYMENTS
+            </Text>
           </View>
         </TouchableOpacity>
       </ScrollView>
@@ -154,26 +166,24 @@ const styles = StyleSheet.create({
   menuItem: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor:'white',
-    alignItems:"center",
-    paddingTop:20,
-    paddingLeft:38,
-    paddingRight:18,
-    paddingBottom:20,
-    marginBottom:1
+    backgroundColor: "white",
+    alignItems: "center",
+    paddingTop: 20,
+    paddingLeft: 38,
+    paddingRight: 18,
+    paddingBottom: 20,
+    marginBottom: 1
   },
-  menuItemHeadingText:
-  {
-    color:"#007AFF",
-    fontSize:24,
-    marginLeft:35
+  menuItemHeadingText: {
+    color: "#007AFF",
+    fontSize: 24,
+    marginLeft: 35
   },
-  menuItemSubHeadingText:
-  {
-    color:"#066ED2",
-    fontSize:9,
-    marginLeft:38,
-    marginTop:16
+  menuItemSubHeadingText: {
+    color: "#066ED2",
+    fontSize: 9,
+    marginLeft: 38,
+    marginTop: 16
   }
 });
 
