@@ -71,12 +71,12 @@ const DashboardStack = StackNavigator({
 
 class Application extends Component {
   render() {
-    if (this.props.user.loggedIn) {
-      return <DashboardStack/>;
-    } else {
-      return <LoginStack/>;
-    }
-    //return <DashboardStack />;
+    // if (this.props.user.loggedIn) {
+    //   return <DashboardStack/>;
+    // } else {
+    //   return <LoginStack/>;
+    // }
+    return <DashboardStack />;
   }
 }
 

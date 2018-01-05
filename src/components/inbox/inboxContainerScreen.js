@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import NewConsultationList from './src/components/Consultation/NewConsultationList'
-import CompletedConsultationList from './src/components/Consultation/CompletedConsultationList'
-
+import NewConsultationList from './NewConsultationList'
+import CompletedConsultationList from './CompletedConsultationList'
+import ConsultationItem from './ConsultatoinItem'
 import {
     View,
     Text,
@@ -16,7 +16,7 @@ class InboxContainerScreen extends Component {
     }
     render() {
         const newConsultationList = (
-            <NewConsultationList  type={this.state.type} />
+            <NewConsultationList type={this.state.type} />
         )
         const completedConsultationList = (
             <CompletedConsultationList type={this.state.type} />
@@ -24,6 +24,14 @@ class InboxContainerScreen extends Component {
 
         return (
             <View style={styles.rootView}>
+            <View style={styles.itemContainer}>
+                <ConsultationItem 
+                    title={'New'}
+                    item={require('../../assets/NewCasePlusIcon.png')} />
+                <ConsultationItem 
+                    title={'Completed'}
+                    item={require('../../assets/NewCaseTickMarkIcon.png')} />
+                </View>
                 {this.state.list === 'New' ? newConsultationList : completedConsultationList}  
             </View>
         );
@@ -33,7 +41,11 @@ class InboxContainerScreen extends Component {
 const styles = StyleSheet.create({
     rootView: {
       flex: 1,
-      backgroundColor: "red"
+    },
+    itemContainer: {
+        flexDirection:'row',
+        justifyContent:'space-around',
+        backgroundColor: 'white'
     }
 });
 
