@@ -22,8 +22,7 @@ const LoginStack = StackNavigator(
     SignupCompleteScreen: { screen: SignupCompleteScreen }
   },
   {
-    headerMode: "float",
-    transitionConfig: noTransitionConfig
+    headerMode: "float"
   }
 );
 
@@ -32,70 +31,52 @@ const DrawerStack = DrawerNavigator({
   Home: { screen: DashboardScreen }
 });
 
-const InboxStack = StackNavigator({
-  Inbox: { screen: InboxContainerScreen }
-});
-
-const DashboardStack = StackNavigator(
-  {
-    DrawerStack: {
-      screen: DrawerStack,
-      navigationOptions: ({ navigation }) => ({
-        title: "Welcome",
-        headerStyle: { backgroundColor: "#007AFF" },
-        gesturesEnabled: false,
-        headerTintColor: "white",
-        headerLeft: (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => {
-              if (navigation.state.index === 0) {
-                navigation.navigate("DrawerOpen");
-              } else {
-                navigation.navigate("DrawerClose");
-              }
-            }}
-          >
-            <Image
-              source={require("../assets/ic_menu.png")}
-              style={{ padding: 5, width: 24, height: 24, marginLeft: 16 }}
-            />
-          </TouchableOpacity>
-        )
-      })
-    },
-    InboxStack: {
-      screen: InboxStack,
-      navigationOptions: ({ navigation }) => ({
-        title: "Inbox",
-        headerStyle: { backgroundColor: "#007AFF" },
-        headerTintColor: "white",
-        headerBackTitle:" "
-      })
-    }
+const DashboardStack = StackNavigator({
+  Drawer: {
+    screen: DrawerStack,
+    navigationOptions: ({ navigation }) => ({
+      title: "Welcome",
+      headerStyle: { backgroundColor: "#007AFF" },
+      gesturesEnabled: false,
+      headerTintColor: "white",
+      headerLeft: (
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => {
+            if (navigation.state.index === 0) {
+              navigation.navigate("DrawerOpen");
+            } else {
+              navigation.navigate("DrawerClose");
+            }
+          }}
+        >
+          <Image
+            source={require("../assets/ic_menu.png")}
+            style={{ padding: 5, width: 24, height: 24, marginLeft: 16 }}
+          />
+        </TouchableOpacity>
+      )
+    })
   },
-  {
-    headerMode: "float",
-    transitionConfig: noTransitionConfig
-  }
-);
-
-const noTransitionConfig = () => ({
-  transitionSpec: {
-    duration: 0,
-    timing: Animated.timing,
-    easing: Easing.step0
+  Inbox: {
+    screen: InboxContainerScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "Inbox",
+      headerStyle: { backgroundColor: "#007AFF" },
+      gesturesEnabled: false,
+      headerTintColor: "white"
+    })
   }
 });
 
 class Application extends Component {
   render() {
-    // if (this.props.user.loggedIn) {
-    //   return <DashboardStack/>;
-    // } else {
-    //   return <LoginStack/>;
-    // }
-    return <DashboardStack />;
+    if (this.props.user.loggedIn) {
+      return <DashboardStack/>;
+    } else {
+      return <LoginStack/>;
+    }
+    //return <DashboardStack />;
   }
 }
 

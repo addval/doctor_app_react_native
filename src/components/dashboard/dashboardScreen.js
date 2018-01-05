@@ -18,7 +18,7 @@ class DashboardScreen extends Component {
   }
 
   goToInbox = () => {
-    this.props.navigation.navigate("InboxStack");
+    this.props.navigation.navigate("Inbox");
   };
 
   render() {
