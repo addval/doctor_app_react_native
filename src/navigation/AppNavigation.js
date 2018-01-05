@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, Animated, Easing } from "react-native";
+import { Image, Animated, Easing, TouchableOpacity } from "react-native";
 import { StackNavigator, DrawerNavigator } from "react-navigation";
 import { connect } from "react-redux";
 
@@ -11,6 +11,8 @@ import SignupPhoneScreen from "../components/signup/signupPhoneScreen";
 import SignupCompleteScreen from "../components/signup/signupCompleteScreen";
 import DashboardScreen from "../components/dashboard/dashboardScreen";
 import Patients from "../components/Patients/Patients";
+import InboxContainerScreen from "../components/inbox/inboxContainerScreen";
+
 
 const LoginStack = StackNavigator(
   {
@@ -22,8 +24,7 @@ const LoginStack = StackNavigator(
     SignupCompleteScreen: { screen: SignupCompleteScreen }
   },
   {
-    headerMode: "float",
-    transitionConfig: noTransitionConfig
+    headerMode: "float"
   }
 );
 
@@ -32,19 +33,17 @@ const DrawerStack = DrawerNavigator({
   Home: { screen: DashboardScreen }
 });
 
-const DashboardStack = StackNavigator(
-  {
-    DrawerStack: { screen: DrawerStack },
-    Patients: { screen: Patients }
-
-  },
-  {
-    headerMode: "float",
+const DashboardStack = StackNavigator({
+  Drawer: {
+    screen: DrawerStack,
     navigationOptions: ({ navigation }) => ({
       title: "Welcome",
+      headerStyle: { backgroundColor: "#007AFF" },
       gesturesEnabled: false,
+      headerTintColor: "white",
       headerLeft: (
-        <Text
+        <TouchableOpacity
+          activeOpacity={0.7}
           onPress={() => {
             if (navigation.state.index === 0) {
               navigation.navigate("DrawerOpen");
@@ -52,21 +51,31 @@ const DashboardStack = StackNavigator(
               navigation.navigate("DrawerClose");
             }
           }}
-          style={{ padding: 5 }}
         >
-          Menu
-        </Text>
+          <Image
+            source={require("../assets/ic_menu.png")}
+            style={{ padding: 5, width: 24, height: 24, marginLeft: 16 }}
+          />
+        </TouchableOpacity>
       )
-    }),
-    transitionConfig: noTransitionConfig
-  }
-);
-
-const noTransitionConfig = () => ({
-  transitionSpec: {
-    duration: 0,
-    timing: Animated.timing,
-    easing: Easing.step0
+    })
+  },
+  Inbox: {
+    screen: InboxContainerScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "Inbox",
+      headerStyle: { backgroundColor: "#007AFF" },
+      gesturesEnabled: false,
+      headerTintColor: "white"
+    })
+  },
+  Patient: { screen: Patients ,
+  navigationOptions: ({ navigation }) => ({
+      title: "Patients",
+      headerStyle: { backgroundColor: "#007AFF" },
+      gesturesEnabled: false,
+      headerTintColor: "white"
+    })
   }
 });
 
@@ -92,4 +101,3 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default connect(mapStateToProps)(Application);
-
