@@ -104,8 +104,9 @@ row: {
     flexDirection:'row',
   },
 header: {
-    padding: 15,
-    backgroundColor: '#bbb',
+    height:25,
+    padding: 3,
+    marginLeft:5,
     color: 'black',
     fontSize:17,
     fontWeight: 'bold',
