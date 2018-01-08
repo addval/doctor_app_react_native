@@ -23,11 +23,11 @@ class DashboardScreen extends Component {
 
   goToPatient = () => {
     this.props.navigation.navigate("Patient");
-  }
+  };
 
-    goToNotifications = () => {
+  goToNotifications = () => {
     this.props.navigation.navigate("Notifications");
-  }
+  };
 
   render() {
     return (
@@ -60,7 +60,11 @@ class DashboardScreen extends Component {
           <Text>Accepting Cases</Text>
           <Switch />
         </View>
-        <TouchableOpacity activeOpacity={0.7} style={styles.menuItem} onPress = {() => this.goToNotifications()}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.menuItem}
+          onPress={() => this.goToNotifications()}
+        >
           <Image
             source={require("../../assets/ic_dash_notification.png")}
             style={{
@@ -98,7 +102,11 @@ class DashboardScreen extends Component {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.7} style={styles.menuItem}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.menuItem}
+          onPress={() => this.goToPatient()}
+        >
           <Image
             source={require("../../assets/ic_dash_family.png")}
             style={{
