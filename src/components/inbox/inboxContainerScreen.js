@@ -32,9 +32,11 @@ class InboxContainerScreen extends Component {
     }
 
     render() {
+        
         const newConsultationList = (
             <NewConsultationList type={this.state.type} />
         )
+        
         const completedConsultationList = (
             <CompletedConsultationList type={this.state.type} />
         )  
