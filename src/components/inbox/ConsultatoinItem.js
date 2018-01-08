@@ -5,38 +5,46 @@ import {
     View, 
     Text, 
     Image,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native'
 
 export default class ConsultationItem extends Component {
 
     render() {
-        const { title } = this.props
-        const { icon } = this.props
-        return(
-            <View>
+        const { title, item, selected } = this.props
+
+        return (
+            <TouchableOpacity style={styles.item} 
+            activeOpacity={0.7}
+            onPress={this.props.onTapItem}>
                 <Image
-                    source={icon}
+                    source={item}
                     style={styles.image} 
                 />
-                <Text style={styles.text}>{title}</Text>
-            </View>
+                <Text style={[styles.text, selected && styles.selectedText]}>{title}</Text>
+            </TouchableOpacity>
         );
     }
 }
 
-ConsultationItem.propTypes = {
-    source: PropTypes.string
-}
-
 const styles = StyleSheet.create({
     image: {
-        width: 50,
-        height: 50,
+        width: 25,
+        height: 25,
         resizeMode: Image.resizeMode.contain,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginVertical: 10
     },
     text: {
-        padding: 5
-    }
+        fontSize: 18,
+        alignSelf: 'center',
+        marginBottom: 10,
+    },
+    item: {
+        flex: 1
+    },
+    selectedText: {
+        fontWeight: 'bold',
+    },
 })

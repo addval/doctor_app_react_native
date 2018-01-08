@@ -10,10 +10,27 @@ import {
 } from 'react-native'
 
 class InboxContainerScreen extends Component {
-    state = {
-        list: 'New',
-        type: 'Consultation',
+    state = { }
+
+    componentWillMount() {
+        const { list, type } = this.props.navigation.state.params
+        this.setState({list, type})
     }
+
+    onTapNew = () => {
+        this.setState({
+            list: 'New',
+            type: 'Second Opinion'
+        })
+    }
+
+    onTapCompleted = () => {
+        this.setState({
+            list: 'Completed',
+            type: 'Decline'
+        })
+    }
+
     render() {
         const newConsultationList = (
             <NewConsultationList type={this.state.type} />
@@ -26,13 +43,19 @@ class InboxContainerScreen extends Component {
             <View style={styles.rootView}>
             <View style={styles.itemContainer}>
                 <ConsultationItem 
+                    style={styles.consultationItem}
                     title={'New'}
-                    item={require('../../assets/NewCasePlusIcon.png')} />
+                    item={require('../../assets/NewCasePlusIcon.png')} 
+                    onTapItem={this.onTapNew}
+                    selected={this.state.list === 'New'} />
                 <ConsultationItem 
+                    style={styles.consultationItem}
                     title={'Completed'}
-                    item={require('../../assets/NewCaseTickMarkIcon.png')} />
-                </View>
-                {this.state.list === 'New' ? newConsultationList : completedConsultationList}  
+                    item={require('../../assets/NewCaseTickMarkIcon.png')}
+                    onTapItem={this.onTapCompleted}
+                    selected={this.state.list !== 'New'} />
+            </View>
+            {this.state.list === 'New' ? newConsultationList : completedConsultationList}  
             </View>
         );
     }
@@ -46,6 +69,9 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-around',
         backgroundColor: 'white'
+    },
+    consultationItem: {
+        flex: 1,
     }
 });
 
