@@ -11,7 +11,6 @@ import {
   Switch,
   TouchableOpacity
 } from "react-native";
-import CustomButton from "../widgets/customButton";
 
 class DashboardScreen extends Component {
   constructor(props) {
@@ -20,13 +19,9 @@ class DashboardScreen extends Component {
 
   goToInbox = () => {
     this.props.navigation.navigate("Inbox");
-  }
+  };
 
-  goToPatient = () => {
-    this.props.navigation.navigate("Patient");
-  }
   render() {
-
     return (
       <ScrollView style={styles.root}>
         <View style={[styles.blueBackground]}>
@@ -53,20 +48,20 @@ class DashboardScreen extends Component {
             paddingLeft: 20,
             paddingRight: 20
           }}
-          >
+        >
           <Text>Accepting Cases</Text>
           <Switch />
         </View>
         <TouchableOpacity activeOpacity={0.7} style={styles.menuItem}>
           <Image
-            source={require("../../assets/ic_dash_notification.png") }
+            source={require("../../assets/ic_dash_notification.png")}
             style={{
               width: 50,
               height: 50,
               resizeMode: Image.resizeMode.contain,
               alignSelf: "center"
             }}
-            />
+          />
           <View>
             <Text style={styles.menuItemHeadingText}>Notifications</Text>
             <Text style={styles.menuItemSubHeadingText}>APPOINTMENTS ETC</Text>
@@ -76,17 +71,17 @@ class DashboardScreen extends Component {
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.menuItem}
-          onPress={() => this.goToInbox() }
-          >
+          onPress={() => this.goToInbox()}
+        >
           <Image
-            source={require("../../assets/ic_dash_inbox.png") }
+            source={require("../../assets/ic_dash_inbox.png")}
             style={{
               width: 50,
               height: 50,
               resizeMode: Image.resizeMode.contain,
               alignSelf: "center"
             }}
-            />
+          />
           <View>
             <Text style={styles.menuItemHeadingText}>Inbox</Text>
             <Text style={styles.menuItemSubHeadingText}>
@@ -95,16 +90,16 @@ class DashboardScreen extends Component {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.7} style={styles.menuItem} onPress={() => this.goToPatient()}>
+        <TouchableOpacity activeOpacity={0.7} style={styles.menuItem}>
           <Image
-            source={require("../../assets/ic_dash_family.png") }
+            source={require("../../assets/ic_dash_family.png")}
             style={{
               width: 50,
               height: 50,
               resizeMode: Image.resizeMode.contain,
               alignSelf: "center"
             }}
-            />
+          />
           <View>
             <Text style={styles.menuItemHeadingText}>Patients</Text>
             <Text style={styles.menuItemSubHeadingText}>ALL PATIENTS</Text>
@@ -113,14 +108,14 @@ class DashboardScreen extends Component {
 
         <TouchableOpacity activeOpacity={0.7} style={styles.menuItem}>
           <Image
-            source={require("../../assets/ic_default_user.png") }
+            source={require("../../assets/ic_default_user.png")}
             style={{
               width: 50,
               height: 50,
               resizeMode: Image.resizeMode.contain,
               alignSelf: "center"
             }}
-            />
+          />
           <View>
             <Text style={styles.menuItemHeadingText}>Me</Text>
             <Text style={styles.menuItemSubHeadingText}>
@@ -137,11 +132,6 @@ const styles = StyleSheet.create({
   rootView: {
     flex: 1,
     backgroundColor: "#F0F8FF"
-  },
-  buttonDummy: {
-    height: 44,
-    width: 100,
-    color: "white"
   },
   blueBackground: {
     backgroundColor: "#007AFF",
