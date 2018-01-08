@@ -21,6 +21,14 @@ class DashboardScreen extends Component {
     this.props.navigation.navigate("Inbox");
   };
 
+  goToPatient = () => {
+    this.props.navigation.navigate("Patient");
+  }
+
+    goToNotifications = () => {
+    this.props.navigation.navigate("Notifications");
+  }
+
   render() {
     return (
       <ScrollView style={styles.root}>
@@ -52,7 +60,7 @@ class DashboardScreen extends Component {
           <Text>Accepting Cases</Text>
           <Switch />
         </View>
-        <TouchableOpacity activeOpacity={0.7} style={styles.menuItem}>
+        <TouchableOpacity activeOpacity={0.7} style={styles.menuItem} onPress = {() => this.goToNotifications()}>
           <Image
             source={require("../../assets/ic_dash_notification.png")}
             style={{

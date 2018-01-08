@@ -12,6 +12,7 @@ import SignupCompleteScreen from "../components/signup/signupCompleteScreen";
 import DashboardScreen from "../components/dashboard/dashboardScreen";
 import Patients from "../components/Patients/Patients";
 import InboxContainerScreen from "../components/inbox/inboxContainerScreen";
+import NotificationScreen from "../components/Notifications/notificationScreen";
 
 const LoginStack = StackNavigator(
   {
@@ -71,6 +72,14 @@ const DashboardStack = StackNavigator({
     screen: Patients,
     navigationOptions: ({ navigation }) => ({
       title: "Patients",
+      headerStyle: { backgroundColor: "#007AFF" },
+      gesturesEnabled: false,
+      headerTintColor: "white"
+    })
+  },
+    Notifications: { screen: NotificationScreen ,
+  navigationOptions: ({ navigation }) => ({
+      title: "Notifications",
       headerStyle: { backgroundColor: "#007AFF" },
       gesturesEnabled: false,
       headerTintColor: "white"

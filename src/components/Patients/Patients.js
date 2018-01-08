@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    marginBottom:2
   },
   costContainer: {
     paddingRight: 15,
