@@ -90,22 +90,23 @@ const DashboardStack = StackNavigator({
 
 class Application extends Component {
   render() {
-    // if (this.props.user.loggedIn) {
-    //   return <DashboardStack/>;
-    // } else {
-    //   return <LoginStack/>;
-    // }
-    return <DashboardStack/>;
+    if (this.props.user.loggedIn) {
+      return <DashboardStack/>;
+    } else {
+      return <LoginStack/>;
+    }
+    //return <DashboardStack/>;
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     user: {
       loggedIn: state.auth.user.loggedIn,
       username: state.auth.user.username,
       password: state.auth.user.password
-    }
+    },
+    store:state.auth.store
   };
 };
 

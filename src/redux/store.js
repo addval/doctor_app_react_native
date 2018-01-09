@@ -1,4 +1,4 @@
-import rootReducer from "./combineReducer";
+import rootReducer from "./reducers/combineReducer";
 import { createStore } from "redux";
 
 let store = createStore(rootReducer);

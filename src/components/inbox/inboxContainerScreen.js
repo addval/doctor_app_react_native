@@ -8,7 +8,7 @@ class InboxContainerScreen extends Component {
             <View style={styles.rootView}></View>
         );
     }
-}
+    }
 
 const styles = StyleSheet.create({
     rootView: {

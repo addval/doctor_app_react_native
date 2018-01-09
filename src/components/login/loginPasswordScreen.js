@@ -11,23 +11,27 @@ import {
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import  * as Actions from "../../redux/actions/auth";
+import * as Actions from "../../redux/actions/auth";
 
 import CustomButton from "../widgets/customButton";
-import { login } from "../../redux/actions/auth";
+import { login, logOut } from "../../redux/actions/auth";
 
-const mapStateToProps = (state,ownProps) =>{
+const mapStateToProps = state => {
   return {
-    user:state.auth.user
+    user: state.auth.user
   };
-}
+};
 
-const mapDispatchToProps = (dispatch)=> {
+const mapDispatchToProps = dispatch => {
   return {
-    onLogin:(userCredentials)=> {dispatch(login(userCredentials));}
-  }
-}
-
+    onLogin: userCredentials => {
+      dispatch(login(userCredentials,this.props.store));
+    },
+    onLogout: userCredentials => {
+      dispatch(logOut(userCredentials));
+    }
+  };
+};
 
 class LoginPasswordScreen extends Component {
   constructor(props) {
@@ -47,20 +51,16 @@ class LoginPasswordScreen extends Component {
   goNext = () => {
     var password = this.state._password;
     if (password.length !== 0) {
-      
-      var userCredentials ={
+      var userCredentials = {
         username: this.state._username,
-        password:this.state._password
-      }
-      
-      this.props.onLogin(userCredentials);
+        password: this.state._password
+      };
 
+      this.props.onLogin(userCredentials);
     } else {
       Alert.alert("Invalid password");
     }
-    
   };
-
 
   render() {
     return (
@@ -131,4 +131,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPasswordScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(
+  LoginPasswordScreen
+);
