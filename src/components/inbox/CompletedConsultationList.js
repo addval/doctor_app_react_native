@@ -71,7 +71,7 @@ export default class CompletedConsultationList extends Component {
         return (
             <View style={styles.container}>
                 <SectionList 
-                    style={[styles.list, (type !== 'Consultations') && styles.selected]}
+                    style={[styles.list, (this.state.type !== 'Consultations') && styles.selectedList]}
                     sections={sections}
                     renderItem={this.renderItem}
                     renderSectionHeader={this.renderSectionHeader}
@@ -107,20 +107,19 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     selectedList: {
-        backgroundColor: 'skyblue',
+        backgroundColor: 'white',
     },
     row: {
         padding: 15,
-        marginBottom: 5,
+        marginBottom: 1,
         backgroundColor: 'skyblue',
       },
-    header: {
+      header: {
         padding: 15,
-        marginBottom: 5,
-        backgroundColor: 'darkblue',
-        color: 'white',
+        backgroundColor: 'lightgray',
+        color: 'rgb(35, 42, 55)',
         fontWeight: 'bold',
-    },    
+      },    
     consultationType: {
         height: 50,
         flexDirection: 'row',

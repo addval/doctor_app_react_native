@@ -20,7 +20,7 @@ export default class ConsultationItem extends Component {
             onPress={this.props.onTapItem}>
                 <Image
                     source={item}
-                    style={styles.image} 
+                    style={[styles.image, selected && styles.selectedImage]} 
                 />
                 <Text style={[styles.text, selected && styles.selectedText]}>{title}</Text>
             </TouchableOpacity>
@@ -29,6 +29,9 @@ export default class ConsultationItem extends Component {
 }
 
 const styles = StyleSheet.create({
+    item: {
+        flex: 1
+    },
     image: {
         width: 25,
         height: 25,
@@ -36,13 +39,13 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginVertical: 10
     },
+    selectedImage: {
+        opacity: 0.5
+    },
     text: {
         fontSize: 18,
         alignSelf: 'center',
         marginBottom: 10,
-    },
-    item: {
-        flex: 1
     },
     selectedText: {
         fontWeight: 'bold',

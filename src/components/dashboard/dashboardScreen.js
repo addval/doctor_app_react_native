@@ -18,7 +18,7 @@ class DashboardScreen extends Component {
   }
 
   goToInbox = (list = 'New', type = 'Consultations') => {
-    this.props.navigation.navigate("Inbox", {list: list, type:type});
+    this.props.navigation.navigate("Inbox", {list: list, type: type });
   };
 
   goToPatient = () => {

@@ -14,20 +14,20 @@ class InboxContainerScreen extends Component {
 
     componentWillMount() {
         const { list, type } = this.props.navigation.state.params
-        this.setState({list, type})
+        this.setState({type, list})
     }
 
     onTapNew = () => {
         this.setState({
             list: 'New',
-            type: 'Second Opinion'
+            type: 'Consultations'
         })
     }
 
     onTapCompleted = () => {
         this.setState({
             list: 'Completed',
-            type: 'Decline'
+            type: 'Completed'
         })
     }
 
