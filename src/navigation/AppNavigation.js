@@ -14,7 +14,6 @@ import Patients from "../components/Patients/Patients";
 import InboxContainerScreen from "../components/inbox/inboxContainerScreen";
 import NotificationScreen from "../components/Notifications/notificationScreen";
 
-
 const LoginStack = StackNavigator(
   {
     LandingScreen: { screen: LandingScreen },
@@ -29,7 +28,6 @@ const LoginStack = StackNavigator(
   }
 );
 
-// drawer stack
 const DrawerStack = DrawerNavigator({
   Home: { screen: DashboardScreen }
 });
@@ -70,8 +68,9 @@ const DashboardStack = StackNavigator({
       headerTintColor: "white"
     })
   },
-  Patient: { screen: Patients ,
-  navigationOptions: ({ navigation }) => ({
+  Patient: {
+    screen: Patients,
+    navigationOptions: ({ navigation }) => ({
       title: "Patients",
       headerStyle: { backgroundColor: "#007AFF" },
       gesturesEnabled: false,
@@ -95,7 +94,7 @@ class Application extends Component {
     // } else {
     //   return <LoginStack/>;
     // }
-    return <DashboardStack/>;
+    return <DashboardStack />;
   }
 }
 
